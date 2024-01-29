@@ -1,29 +1,29 @@
 class TasksController < ApplicationController
-  def task
+  def index
     @tasks = Task.all
   end
   def show
-    @tasks = Task.find(params[:id])
+    @task = Task.find(params[:id])
   end
   def new
-    @tasks = Task.new
+    @task = Task.new
   end
   def create
-    @tasks = Task.new(task_params)
-    @tasks.save
-    redirect_to tasks_path(@tasks)
+    @task = Task.new(task_params)
+    @task.save
+    redirect_to tasks_path(@task)
   end
   def edit
-    @tasks = Task.find(params[:id])
+    @task = Task.find(params[:id])
   end
   def update
-    @tasks = Task.find(params[:id])
-    @tasks.update(task_params)
-    redirect_to tasks_path(@tasks)
+    @task = Task.find(params[:id])
+    @task.update(task_params)
+    redirect_to tasks_path(@task)
   end
   def destroy
-    @tasks = Task.find(params[:id])
-    @tasks.destroy
+    @task = Task.find(params[:id])
+    @task.destroy
     # No need for app/views/restaurants/destroy.html.erb
     redirect_to tasks_path, status: :see_other
   end

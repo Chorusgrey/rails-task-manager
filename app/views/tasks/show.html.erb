@@ -1,16 +1,20 @@
-<body>
   <div class="cards">
-  <h1><span><%=@tasks.title%></span></h1>
+  <h1><span><%=@task.title%></span></h1>
 
-  <div><%=@tasks.details%></div>
-  <div><%=@tasks.completed%></div>
+  <div><%=@task.details%></div>
+    <div><%=@task.completed%></div>
 
-<%= link_to "Back to List", tasks_path %>
-<%= link_to "New Task", new_task_path %>
-<%= link_to "Edit Task", edit_task_path %>
-<%= link_to "Delete",
-  task_path(@tasks),
-  data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
-%>
+    <%= form_with model: @task do |f| %>
+      <%= f.label :completed %>
+      <%= f.check_box :completed %>
+      <%= f.submit %>
+    <% end %>
+
+    <%= link_to "Back to List", tasks_path %>
+    <%= link_to "New Task", new_task_path %>
+    <%= link_to "Edit Task", edit_task_path %>
+    <%= link_to "Delete",
+      task_path(@task),
+      data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+    %>
   </div>
-</body>
